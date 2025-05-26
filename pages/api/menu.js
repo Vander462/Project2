@@ -31,8 +31,20 @@ function saveBase64Image(base64String) {
 }
 
 export default async function handler(req, res) {
-  const user = await getAuthUser(req);
+  if (req.method === 'GET') {
+    try {
+      const items = await prisma.menuItem.findMany({
+        orderBy: { createdAt: 'desc' },
+      });
+      return res.status(200).json(items);
+    } catch (error) {
+      console.error('Error fetching menu:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  }
 
+  // For POST and DELETE operations, require authentication
+  const user = await getAuthUser(req);
   if (!user) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -77,18 +89,6 @@ export default async function handler(req, res) {
       return res.status(201).json(newItem);
     } catch (error) {
       console.error('Error creating menu item:', error);
-      return res.status(500).json({ error: 'Internal server error' });
-    }
-  }
-
-  if (req.method === 'GET') {
-    try {
-      const items = await prisma.menuItem.findMany({
-        orderBy: { createdAt: 'desc' },
-      });
-      return res.status(200).json(items);
-    } catch (error) {
-      console.error('Error fetching menu:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
   }

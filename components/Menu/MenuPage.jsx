@@ -11,10 +11,25 @@ export default function MenuPage() {
   const categories = ['All', 'Bhutanese Specials', 'Vegetarian', 'Non-Vegetarian', 'Desserts'];
 
   useEffect(() => {
-    fetch('/api/menu')
-      .then(res => res.json())
-      .then(data => setMenuItems(data))
-      .catch(err => console.error('Error fetching menu:', err));
+    fetch('/api/menu', {
+      credentials: 'include'
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to fetch menu items');
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid menu data received');
+        }
+        setMenuItems(data);
+      })
+      .catch(err => {
+        console.error('Error fetching menu:', err);
+        setMenuItems([]); // Set empty array on error
+      });
   }, []);
 
   const handleDishClick = (dish) => {
