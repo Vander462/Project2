@@ -1,0 +1,435 @@
+/* Apply the background image to the body or main container */
+body {
+  background-image: url('/images/BG.png'); /* Place your image in public/images and rename if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Shared section styles */
+.hero, .section, .teamSection, .familySection {
+  background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+  color: #fff;
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Headings */
+.hero h1,
+.hero h2,
+.section h2,
+.teamSection h2,
+.familySection h2 {
+  color: gold;
+  margin-top: 1.5rem;
+}
+
+.teamGrid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.teamGrid div {
+  width: 200px;
+  text-align: center;
+}
+
+.teamGrid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Name styling below team images */
+.teamGrid h3 {
+  color: gold;
+  margin: 0.5rem 0 0;
+}
+
+.teamGrid p {
+  color: #fff;
+  margin: 0;
+}
+
+/* Family photo section */
+.familyImage {
+  width: 70%;
+  height: auto;
+  max-width: 500px;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: block;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section {
+  padding: 4rem 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctaButton {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background: #FFD700;
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  background: #FFC800;
+}
+
+.specialtiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.specialtyCard {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.specialtyCard:hover {
+  transform: translateY(-5px);
+}
+
+.specialtyImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.specialtyImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.specialtyCard:hover .specialtyImageWrapper img {
+  transform: scale(1.05);
+}
+
+.specialtyOverlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.specialtyOverlay span {
+  color: gold;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.specialtyContent {
+  padding: 1.5rem;
+}
+
+.specialtyContent h3 {
+  color: gold;
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.specialtyContent p {
+  color: #fff;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.specialtyInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.specialtyInfo span {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.specialtyBadge {
+  background: rgba(255, 215, 0, 0.2);
+  color: gold !important;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+}
+
+.menuButton {
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menuButton:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.teamSection {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6rem 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.teamSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 0 1rem;
+}
+
+.teamCard {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.teamCard:hover {
+  transform: translateY(-5px);
+}
+
+.teamImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  border: 3px solid gold;
+}
+
+.teamCard h3 {
+  color: gold;
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.teamCard p {
+  color: #fff;
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.teamSocial {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.teamSocial a {
+  color: #666;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.teamSocial a:hover {
+  color: #ff6b6b;
+}
+
+.familySection {
+  padding: 6rem 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+}
+
+.familySection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.familyContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.familyContent h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: gold;
+}
+
+.familyContent p {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.familyImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.familyImage {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.familyImage:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 1024px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem;
+  }
+
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .teamCard {
+    padding: 1.5rem;
+  }
+
+  .teamImage {
+    width: 180px;
+    height: 180px;
+  }
+
+  .familyContent {
+    padding: 1rem;
+  }
+
+  .familyContent h2 {
+    font-size: 2rem;
+  }
+
+  .familyContent p {
+    font-size: 1.1rem;
+  }
+
+  .familyImage {
+    max-width: 300px;
+  }
+
+  .specialtiesGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 2rem auto 0;
+  }
+
+  .specialtyImageWrapper {
+    height: 200px;
+  }
+
+  .specialtyContent {
+    padding: 1.2rem;
+  }
+
+  .specialtyContent h3 {
+    font-size: 1.2rem;
+  }
+
+  .specialtyContent p {
+    font-size: 0.9rem;
+  }
+}

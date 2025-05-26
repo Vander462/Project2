@@ -1,0 +1,126 @@
+.orderList {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.noOrders {
+  text-align: center;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.ordersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orderCard {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.orderCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.orderInfo h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.orderInfo p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.orderActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.detailsButton,
+.removeButton {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.detailsButton {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.detailsButton:hover {
+  background-color: #dee2e6;
+}
+
+.removeButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.removeButton:hover {
+  background-color: #c82333;
+}
+
+.statusSelect {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  background-color: white;
+  color: #495057;
+}
+
+.orderDetails {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+.orderDetails h4 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.orderTotal {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #dee2e6;
+  text-align: right;
+  font-size: 1.1em;
+} 

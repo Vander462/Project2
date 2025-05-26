@@ -1,0 +1,412 @@
+.dish {
+  text-align: center;
+  margin: 15px;
+  transition: transform 0.3s ease;
+}
+.dish:hover {
+  transform: scale(1.05);
+}
+.dish img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.price {
+  color: #d63031;
+  font-weight: bold;
+}
+
+.menuContainer {
+  padding-top: 70px;
+  background-color: #f8f5f0;
+  min-height: 100vh;
+}
+
+.menuDescription {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.categoryButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.categoryButton {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #4a3c31;
+  background: transparent;
+  color: #4a3c31;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.categoryButton:hover,
+.categoryButton.active {
+  background: #4a3c31;
+  color: white;
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.menuCard {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuCard:hover {
+  transform: translateY(-5px);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  overflow: hidden;
+}
+
+.menuImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.menuCard:hover .menuImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menuCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+.imageOverlay span {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.specialBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(218, 165, 32, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.cardContent {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dishName {
+  color: #4a3c31;
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.description {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price {
+  color: #4a3c31;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.spicyLevel {
+  font-size: 1.2rem;
+}
+
+.orderButton {
+  display: inline-block;
+  background: #4a3c31;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.orderButton:hover {
+  background: #5d4c3e;
+  transform: translateY(-2px);
+  color: white;
+  text-decoration: none;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.modalImage {
+  height: 400px;
+  overflow: hidden;
+}
+
+.modalImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalInfo {
+  padding: 2rem;
+}
+
+.modalInfo h2 {
+  color: #4a3c31;
+  margin: 0 0 1rem;
+}
+
+.modalDescription {
+  color: #666;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.dishDetails {
+  margin: 1.5rem 0;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.detailItem span {
+  color: #666;
+}
+
+.detailItem strong {
+  color: #4a3c31;
+}
+
+.orderButtonLarge {
+  display: inline-block;
+  background: #4a3c31;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.orderButtonLarge:hover {
+  background: #5d4c3e;
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .menuGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .menuContainer {
+    padding-top: 60px;
+  }
+
+  .menuGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .categoryButtons {
+    gap: 0.5rem;
+  }
+
+  .categoryButton {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .modalGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .modalImage {
+    height: 250px;
+  }
+
+  .modalInfo {
+    padding: 1.5rem;
+  }
+
+  .modalContent {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .menuDescription {
+    font-size: 1rem;
+  }
+
+  .menuGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dishName {
+    font-size: 1.2rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+  }
+
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .modalInfo h2 {
+    font-size: 1.5rem;
+  }
+
+  .modalDescription {
+    font-size: 0.95rem;
+  }
+
+  .closeButton {
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+  }
+}

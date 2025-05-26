@@ -1,72 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
-  password  String
   name      String?
+  password  String
   role      Role     @default(CUSTOMER)
+  orders    Order[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  cart      CartItem[]
-  orders    Order[]
-}
-
-enum Role {
-  ADMIN
-  CUSTOMER
 }
 
 model MenuItem {
-  id          Int         @id @default(autoincrement())
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String?
   price       Float
   category    String
   image       String?
+  orderItems  OrderItem[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
-
-  cartItems   CartItem[]  @relation("MenuItemToCartItem")
-  orderItems  OrderItem[] @relation("MenuItemToOrderItem")
 }
 
-model CartItem {
-  id         Int       @id @default(autoincrement())
-  userId     Int
-  menuItem   MenuItem  @relation("MenuItemToCartItem", fields: [menuItemId], references: [id])
-  menuItemId Int
-  quantity   Int       @default(1)
-  user       User      @relation(fields: [userId], references: [id])
-}
+
 model Order {
-  id          Int       @id @default(autoincrement())
-  userId      Int
-  user        User      @relation(fields: [userId], references: [id])
-  items       OrderItem[]
-  total       Float
-  status      OrderStatus @default(PENDING)
-  address     String
-  phone       String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  user      User        @relation(fields: [userId], references: [id])
+  userId    String      @db.ObjectId
+  items     OrderItem[]
+  total     Float
+  status    OrderStatus @default(PENDING)
+  address   String?     // <-- Add this
+  phone     String?     // <-- Add this
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
 
 model OrderItem {
-  id         Int       @id @default(autoincrement())
-  orderId    Int
-  order      Order     @relation(fields: [orderId], references: [id])
-  menuItemId Int
-  menuItem   MenuItem  @relation("MenuItemToOrderItem", fields: [menuItemId], references: [id])
-  quantity   Int       @default(1)
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  order      Order    @relation(fields: [orderId], references: [id])
+  orderId    String   @db.ObjectId
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id])
+  menuItemId String   @db.ObjectId
+  quantity   Int
   price      Float
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
 }
 
 enum OrderStatus {
